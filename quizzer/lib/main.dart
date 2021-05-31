@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'quiz_brain.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 QuizBrain quizBrain = QuizBrain();
 void main() {
@@ -91,44 +92,44 @@ class _QuizPageState extends State<QuizPage> {
           SizedBox(
             height: 25,
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(145, 0, 145, 0),
-            child: RaisedButton(
-              color: Colors.blueGrey,
-              onPressed: () {
-                setState(() {
-                  queno = (queno - 1) % quizBrain.QuestionBan.length;
-                });
-              },
-              child: Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-                size: 50,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(145, 0, 145, 0),
-            child: RaisedButton(
-              color: Colors.blueGrey,
-              onPressed: () {
-                setState(() {
-                  queno = (queno + 1) % quizBrain.QuestionBan.length;
-                });
-              },
-              child: Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-                size: 50,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 25,
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(145, 0, 145, 0),
+          //   child: RaisedButton(
+          //     color: Colors.blueGrey,
+          //     onPressed: () {
+          //       setState(() {
+          //         queno = (queno - 1) % quizBrain.QuestionBan.length;
+          //       });
+          //     },
+          //     child: Icon(
+          //       Icons.arrow_back,
+          //       color: Colors.white,
+          //       size: 50,
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: 25,
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(145, 0, 145, 0),
+          //   child: RaisedButton(
+          //     color: Colors.blueGrey,
+          //     onPressed: () {
+          //       setState(() {
+          //         queno = (queno + 1) % quizBrain.QuestionBan.length;
+          //       });
+          //     },
+          //     child: Icon(
+          //       Icons.arrow_forward,
+          //       color: Colors.white,
+          //       size: 50,
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: 25,
+          // ),
           Expanded(
             flex: 10,
             child: Padding(
@@ -164,7 +165,30 @@ class _QuizPageState extends State<QuizPage> {
 
                   setState(() {
                     trueans(cor);
-                    queno = (queno + 1) % quizBrain.QuestionBan.length;
+                    if (++queno == quizBrain.QuestionBan.length) {
+                      SCORE.removeRange(0, quizBrain.QuestionBan.length);
+                      queno = 0;
+                      Alert(
+                        context: context,
+                        type: AlertType.warning,
+                        title: "FINISHED",
+                        desc: "You\'ve reaced the end of the Quiz ",
+                        buttons: [
+                          DialogButton(
+                            child: Text(
+                              "Start Again",
+                              style:
+                                  TextStyle(color: Colors.white, fontSize: 20),
+                            ),
+                            onPressed: () => Navigator.pop(context),
+                            gradient: LinearGradient(colors: [
+                              Color.fromRGBO(116, 116, 191, 1.0),
+                              Color.fromRGBO(52, 138, 199, 1.0)
+                            ]),
+                          )
+                        ],
+                      ).show();
+                    }
                   });
                   //The user picked true.
                 },
@@ -186,10 +210,35 @@ class _QuizPageState extends State<QuizPage> {
                 ),
                 onPressed: () {
                   bool cor = quizBrain.QuestionBan[queno].a;
-                  setState(() {
-                    falseans(cor);
-                    queno = (queno + 1) % quizBrain.QuestionBan.length;
-                  });
+                  setState(
+                    () {
+                      falseans(cor);
+                      if (++queno == quizBrain.QuestionBan.length) {
+                        SCORE.removeRange(0, quizBrain.QuestionBan.length);
+                        queno = 0;
+                        Alert(
+                          context: context,
+                          type: AlertType.warning,
+                          title: "FINISHED",
+                          desc: "You\'ve reaced the end of the Quiz ",
+                          buttons: [
+                            DialogButton(
+                              child: Text(
+                                "Start Again",
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 20),
+                              ),
+                              onPressed: () => Navigator.pop(context),
+                              gradient: LinearGradient(colors: [
+                                Color.fromRGBO(116, 116, 191, 1.0),
+                                Color.fromRGBO(52, 138, 199, 1.0)
+                              ]),
+                            )
+                          ],
+                        ).show();
+                      }
+                    },
+                  );
                   //The user picked false.
                 },
               ),
