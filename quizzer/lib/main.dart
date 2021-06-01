@@ -92,60 +92,60 @@ class _QuizPageState extends State<QuizPage> {
           SizedBox(
             height: 25,
           ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(145, 0, 145, 0),
-            child: RaisedButton(
-              color: Colors.blueGrey,
-              onPressed: () {
-                setState(() {
-                  queno = (queno - 1) % quizBrain.QuestionBan.length;
-                });
-              },
-              child: Icon(
-                Icons.arrow_back,
-                color: Colors.white,
-                size: 50,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(145, 0, 145, 0),
-            child: RaisedButton(
-              color: Colors.blueGrey,
-              onPressed: () {
-                setState(() {
-                  queno = (queno + 1) % quizBrain.QuestionBan.length;
-                });
-              },
-              child: Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-                size: 50,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          Expanded(
-            flex: 10,
-            child: Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Center(
-                child: Text(
-                  quizBrain.QuestionBan[queno].q,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 25.0,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(145, 0, 145, 0),
+          //   child: RaisedButton(
+          //     color: Colors.blueGrey,
+          //     onPressed: () {
+          //       setState(() {
+          //         queno = (queno - 1) % quizBrain.QuestionBan.length;
+          //       });
+          //     },
+          //     child: Icon(
+          //       Icons.arrow_back,
+          //       color: Colors.white,
+          //       size: 50,
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: 25,
+          // ),
+          // Padding(
+          //   padding: const EdgeInsets.fromLTRB(145, 0, 145, 0),
+          //   child: RaisedButton(
+          //     color: Colors.blueGrey,
+          //     onPressed: () {
+          //       setState(() {
+          //         queno = (queno + 1) % quizBrain.QuestionBan.length;
+          //       });
+          //     },
+          //     child: Icon(
+          //       Icons.arrow_forward,
+          //       color: Colors.white,
+          //       size: 50,
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: 25,
+          // ),
+          // Expanded(
+          //   flex: 10,
+          //   child: Padding(
+          //     padding: EdgeInsets.all(10.0),
+          //     child: Center(
+          //       child: Text(
+          //         quizBrain.QuestionBan[queno].q,
+          //         textAlign: TextAlign.center,
+          //         style: TextStyle(
+          //           fontSize: 25.0,
+          //           color: Colors.white,
+          //         ),
+          //       ),
+          //     ),
+          //   ),
+          // ),
           Expanded(
             flex: 2,
             child: Padding(
