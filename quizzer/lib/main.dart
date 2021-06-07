@@ -130,22 +130,22 @@ class _QuizPageState extends State<QuizPage> {
           // SizedBox(
           //   height: 25,
           // ),
-          // Expanded(
-          //   flex: 10,
-          //   child: Padding(
-          //     padding: EdgeInsets.all(10.0),
-          //     child: Center(
-          //       child: Text(
-          //         quizBrain.QuestionBan[queno].q,
-          //         textAlign: TextAlign.center,
-          //         style: TextStyle(
-          //           fontSize: 25.0,
-          //           color: Colors.white,
-          //         ),
-          //       ),
-          //     ),
-          //   ),
-          // ),
+          Expanded(
+            flex: 10,
+            child: Padding(
+              padding: EdgeInsets.all(10.0),
+              child: Center(
+                child: Text(
+                  quizBrain.QuestionBan[queno].q,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
           Expanded(
             flex: 2,
             child: Padding(
